@@ -5,8 +5,16 @@ using Class.Persister;
 var handler = new Handler();
 var exams = handler.GetExam(10);
 
-//var persisterStudent = new StudentPersister("Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;");
-var persisterStudent = new StudentPersister("Server=.;Database=Gestionale;Trusted_Connection=True;");
+
+var persisterPerson = new PersonPersister("Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;");
+
+var persons = persisterPerson.GetPeople("");
+
+var persisterExam = new ExamPersister("Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;");
+var exam = persisterExam.GetExam(10);
+
+var persisterStudent = new StudentPersister("Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;");
+
 var students = persisterStudent.GetStudent();
 
 
