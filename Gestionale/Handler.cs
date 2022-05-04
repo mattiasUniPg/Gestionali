@@ -28,7 +28,7 @@ namespace Gestionale
                 IdExam = 24,
                 IdTeacher = 2243,
                 Date = new DateTime(2021, 05, 02),
-                Subject="Laboratorio Architettura"
+                IdSubject=30
             };
 
             var persisterEsame = new ExamPersister(connectionString);
@@ -56,7 +56,7 @@ namespace Gestionale
                 IdExam = 16,
                 IdTeacher = 3878,
                 Date = DateTime.Now,
-                Subject="Laboratorio Elaboratori"
+                IdSubject=22
 
 
             };
@@ -89,10 +89,10 @@ namespace Gestionale
         }
 
 
-        public IEnumerable<Exam> GetExam(string Subject)
+        public IEnumerable<Exam> GetExamBySubject(int IdSubject)
         {
             var persisterEsame = new ExamPersister(connectionString);
-            var listEsame = persisterEsame.GetExam(Subject);
+            var listEsame = persisterEsame.GetExam(IdSubject);
             return listEsame;
         }
     }

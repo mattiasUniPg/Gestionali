@@ -4,7 +4,7 @@ using Gestionale;
 var handler = new Handler();
 var exams = handler.GetExam();
 
-var persisterStudent = new StudentPersister("");
+var persisterStudent = new StudentPersister("Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;");
 var students = persisterStudent.GetStudent();
 
 
@@ -15,11 +15,11 @@ foreach (var item in nuovematricole)
     Console.WriteLine($"{item.IdStudente} {item.Matricola} {item.DataImmatricolazione.Year} => {DateTime.Now.Year - item.DataImmatricolazione.Year}");
 }
 
-IEnumerable<Exam> sessioneinvernale = exams.Where(x => DateTime.Now.Month - x.DataImmatricolazione.Month >4);
+IEnumerable<Exam> sessioneinvernale = exams.Where(x => DateTime.Now.Month - x.Date.Month >4);
 
 foreach (var item in sessioneinvernale)
 {
-    Console.WriteLine($"{item.IdExam} {item.Subject} {item.IdTeacher} {item.Date.Year} => {DateTime.Now.Month - item.Date.Month}");
+    Console.WriteLine($"{item.IdExam} {item.IdSubject} {item.IdTeacher} {item.Date.Year} => {DateTime.Now.Month - item.Date.Month}");
 }
 
 

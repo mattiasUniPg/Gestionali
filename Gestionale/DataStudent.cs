@@ -1,4 +1,8 @@
-﻿using Class.Model;
+﻿
+/*
+ * 
+ *          FILE A PARTE  
+using Class.Model;
 using System.Data.SqlClient;
 
 namespace Gestionale
@@ -63,5 +67,5 @@ namespace Gestionale
 
 
      }
-}
-
+}           FINE ERRORE
+*/                  
