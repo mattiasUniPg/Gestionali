@@ -35,19 +35,20 @@ namespace Gestionale
             return persisterEsame.Add(exam);
         }
 
-        //public bool UpdateStudente()
-        //{
-        //    var studente = new Student
-        //    {
-        //        Id = 2578,
-        //        IdStudente = 4687,
-        //        Matricola = "264876",
-        //    };
+        public bool UpdateStudente()
+        {
+            var studente = new Student
+            {
+                Id = 4,
+                IdStudente = 4687,
+                Matricola = "264876",
+                DataImmatricolazione= new DateTime(2022-04-30)
+            };
 
-        //    var persisterStudente = new StudentPersister("");
-        //    return  persisterStudente(student);
+            var persisterStudenti = new StudentPersister("connectionString");
+            return persisterStudenti.Update(studente);
 
-        //}
+        }
 
         public bool UpdateEsame()
         {

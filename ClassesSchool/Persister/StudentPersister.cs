@@ -59,7 +59,23 @@ namespace Class.Persister
             }
             return listResult;
         }
+    
+        public bool Update(Student student)
+        {
+            var sql = @"UPDATE[dbo].[Student]
+                           SET[IdPerson] =@IdPerson
+                              ,[Matricola] = @Matricola
+                              ,[DataIscrizione] = @DataIscrizione
+                          WHERE @IdPerson=IdPerson";
 
+            using var connection = new SqlConnection(ConnectionString);
+            connection.Open();
+            using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@IdPerson", student.Id);
+            command.Parameters.AddWithValue("@Matricola", student.Matricola); 
+            command.Parameters.AddWithValue("@DataIscrizione", student.DataImmatricolazione); ;
+            return command.ExecuteNonQuery() > 0;
+        }
 
         public List<Student> GetStudent(int idStudente)
         {

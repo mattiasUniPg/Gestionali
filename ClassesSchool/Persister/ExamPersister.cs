@@ -50,7 +50,7 @@ namespace Class.Persister
         {
 
             var sql = @"
-                    SELEC  [IdExam]
+                    SELECT  [IdExam]
                            ,[IdTeacher]
                           ,[Date]
                           ,[IdSubject]
