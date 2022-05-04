@@ -31,11 +31,11 @@ namespace Class.Persister
             return Convert.ToInt32(command.ExecuteNonQuery());
         }
 
-        public List<Student> GetProf()
+        public List<Teacher> GetProf()
         {
 
             var sql = @"SELECT[IdTeacher]
-                            ,[IdPerson]
+                            ,[IdPerson]s
                             ,[Matricola]
                             ,[DataAssunzione]
                        FROM[dbo].[Teacher]";
@@ -77,7 +77,7 @@ namespace Class.Persister
             return command.ExecuteNonQuery() > 0;
         }
 
-        public List<Student> GetProf(int idTeacher)
+        public List<Teacher> GetProf(int idTeacher)
         {
 
             var sql = @"

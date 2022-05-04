@@ -87,7 +87,7 @@ namespace Class.Persister
 
 
 
-        public IEnumerable<Subject> GetSubjectByHours(DateTime Hours)
+        public IEnumerable<Subject> GetSubjectById(int IdSubject)
         {
 
             var sql = @"SELECT [IdSubject]
@@ -96,13 +96,13 @@ namespace Class.Persister
                           ,[Credits]
                           ,[Hours]
                       FROM [dbo].[Subject]
-                        where IdTeacher =@IdTeacher";
+                        where IdSubject =@IdSubject";
 
 
             using var connection = new SqlConnection(ConnectionString);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@IdSubject", Id);
+            command.Parameters.AddWithValue("@IdSubject", IdSubject);
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
