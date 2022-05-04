@@ -1,37 +1,44 @@
 ﻿using Class.Model;
-using Gestionale;
 using Class.Persister;
 
-var handler = new Handler();
-var exams = handler.GetExam(10);
+
+//var stringconnection = "Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;";
+var stringconnection = "Server=.;Database=Gestionale;Trusted_Connection=True;";
+
+var persisterPerson = new PersonPersister(stringconnection);
+var studentPersister = new StudentPersister(stringconnection);
 
 
-var persisterPerson = new PersonPersister("Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;");
-
-var persons = persisterPerson.GetPeople("");
-
-var persisterExam = new ExamPersister("Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;");
-var exam = persisterExam.GetExam(10);
-
-var persisterStudent = new StudentPersister("Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;");
-
-var students = persisterStudent.GetStudent();
-
-
-IEnumerable<Student> nuovematricole = students.Where(x => DateTime.Now.Year - x.DataImmatricolazione.Year <2 );
-
-foreach (var item in nuovematricole)
+var person = new Person
 {
-    Console.WriteLine($"{item.IdStudente} {item.Matricola} {item.DataImmatricolazione.Year} => {DateTime.Now.Year - item.DataImmatricolazione.Year}");
-}
+    Address = " via dei tigli 51",
+    Birthday = new DateTime(1982, 5, 5),
+    Gender ="Male",
+    Name = "Fulvio",
+    Surname ="Biondo"
+};
 
-IEnumerable<Exam> sessioneinvernale = exams.Where(x => DateTime.Now.Month - x.Date.Month >4);
+var idPerson = persisterPerson.Add(person);
 
-foreach (var item in sessioneinvernale)
+var student = new Student
 {
-    Console.WriteLine($"{item.IdExam} {item.IdSubject} {item.IdTeacher} {item.Date.Year} => {DateTime.Now.Month - item.Date.Month}");
-}
+    Address = person.Address,
+    Birthday =person.Birthday,
+    Gender = person.Gender,
+    Name = person.Name,
+    Surname = person.Surname,
+    Id = person.Id,
+    DataImmatricolazione = DateTime.Now,
+    Matricola ="ABC12345"
+};
 
+
+var idstudent = studentPersister.Add(student);
+
+student.IdStudente = idstudent;
+
+
+Console.WriteLine($"{student.Name} {student.Surname} {student.Id} {student.Address} {student.Birthday.ToShortDateString()} {student.Matricola} {student.DataImmatricolazione.ToLongDateString()} {student.IdStudente} {student.Gender}");
 
 
 Console.ReadLine();

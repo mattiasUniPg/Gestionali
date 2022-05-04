@@ -9,7 +9,7 @@ namespace Class.Persister
             private readonly string ConnectionString;
             public PersonPersister(string connectionString)=>  ConnectionString = connectionString;
          
-            public bool Add(Person person)
+            public int Add(Person person)
             {
                 var sql = @"
                         INSERT INTO [dbo].[Person]
@@ -21,7 +21,7 @@ namespace Class.Persister
                                    (@Name
                                    ,@Surname
                                    ,@BirthDay
-                                   ,@Gender)";
+                                   ,@Gender); SELECT @@IDENTITY AS 'Identity';  ";
 
                 using var connection = new SqlConnection(ConnectionString);
                 connection.Open();
@@ -30,7 +30,7 @@ namespace Class.Persister
                 command.Parameters.AddWithValue("@Surname", person.Surname);
                 command.Parameters.AddWithValue("@BirthDay", person.Birthday);
                 command.Parameters.AddWithValue("@Gender", person.Gender);
-                return command.ExecuteNonQuery() > 0;
+                return Convert.ToInt32(command.ExecuteScalar());
             }
 
 

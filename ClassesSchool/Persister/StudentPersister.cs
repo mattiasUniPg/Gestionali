@@ -10,7 +10,7 @@ namespace Class.Persister
         {
             ConnectionString = connectionString;
         }
-        public bool Add(Student student)
+        public int Add(Student student)
         {
             var sql = @"INSERT INTO [dbo].[Student]
                        ([IdPerson]
@@ -19,7 +19,7 @@ namespace Class.Persister
                  VALUES
                        (@IdPerson
                        ,@Matricola
-                       ,@DataIscrizione)";
+                       ,@DataIscrizione);SELECT @@IDENTITY AS 'Identity';  ";
 
             using var connection = new SqlConnection(ConnectionString);
             connection.Open();
@@ -27,7 +27,7 @@ namespace Class.Persister
             command.Parameters.AddWithValue("@IdPerson", student.Id);
             command.Parameters.AddWithValue("@Matricola", student.Matricola);
             command.Parameters.AddWithValue("@DataIscrizione", student.DataImmatricolazione);
-            return command.ExecuteNonQuery() > 0;
+            return Convert.ToInt32(command.ExecuteNonQuery());
         }
 
         public List<Student> GetStudent()
