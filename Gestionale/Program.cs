@@ -1,8 +1,9 @@
 ﻿using Class.Model;
 using Gestionale;
+using Class.Persister;
 
 var handler = new Handler();
-var exams = handler.GetExam();
+var exams = handler.GetExam(10);
 
 var persisterStudent = new StudentPersister("Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;");
 var students = persisterStudent.GetStudent();
