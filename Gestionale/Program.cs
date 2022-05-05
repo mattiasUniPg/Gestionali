@@ -2,8 +2,8 @@
 using Class.Persister;
 
 
-var stringconnection = "Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;";
-//var stringconnection = "Server=.;Database=Gestionale;Trusted_Connection=True;";
+//var stringconnection = "Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;";
+var stringconnection = "Server=.;Database=Gestionale;Trusted_Connection=True;";
 
 var persisterPerson = new PersonPersister(stringconnection);
 var studentPersister = new StudentPersister(stringconnection);
@@ -13,10 +13,10 @@ var examPersister = new ExamPersister(stringconnection);
 
 var person = new Person
 {
-    Address = " via dei tigli 51",
+    Address = " via dei tigli 515",
     Birthday = new DateTime(1982, 5, 5),
-    Gender ="Male",
-    Name = "Fulvio",
+    Gender ="Female",
+    Name = "Fulvia",
     Surname ="Biondo"
 };
 
@@ -32,7 +32,7 @@ var student = new Student
     Surname = person.Surname,
     Id = person.Id,
     DataImmatricolazione =new DateTime(1987, 7, 12),
-    Matricola ="ABC12345"
+    Matricola ="ABC123456"
 };
 
 var idStudent = studentPersister.Add(student);

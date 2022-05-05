@@ -19,9 +19,9 @@ namespace Class.Persister
                            ,[Date]
                            ,[IdSubject])
                      VALUES
-                           (IdTeacher
-                           ,Date
-                           ,IdSubject)";
+                           (@IdTeacher
+                           ,@Date
+                           ,@IdSubject)";
 
             using var connection = new SqlConnection(ConnectionString);
             connection.Open();
