@@ -27,7 +27,7 @@ namespace Class.Persister
             command.Parameters.AddWithValue("@IdPerson", student.Id);
             command.Parameters.AddWithValue("@Matricola", student.Matricola);
             command.Parameters.AddWithValue("@DataIscrizione", student.DataImmatricolazione);
-            return Convert.ToInt32(command.ExecuteNonQuery());
+            return Convert.ToInt32(command.ExecuteScalar());
         }
 
         public List<Student> GetStudent()

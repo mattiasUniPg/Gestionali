@@ -12,7 +12,7 @@ namespace Class.Persister
             ConnectionString = connectionString;
         }
 
-        public bool Add(Subject subject)
+        public int Add(Subject subject)
         {
             var sql = @"INSERT INTO [dbo].[Subject]
                            ([Name]
@@ -32,7 +32,7 @@ namespace Class.Persister
             command.Parameters.AddWithValue("@Description", subject.Description);
             command.Parameters.AddWithValue("@Hours", subject.Hours);
             command.Parameters.AddWithValue("@Credits", subject.Credits);
-            return command.ExecuteNonQuery() > 0;
+            return Convert.ToInt32(command.ExecuteScalar());
         }
         public bool Update(Subject subject)
         {
@@ -87,7 +87,7 @@ namespace Class.Persister
 
 
 
-        public IEnumerable<Subject> GetSubjectByHours(DateTime Hours)
+        public IEnumerable<Subject> GetSubjectByHours(int IdSubject)
         {
 
             var sql = @"SELECT [IdSubject]
@@ -102,7 +102,7 @@ namespace Class.Persister
             using var connection = new SqlConnection(ConnectionString);
             connection.Open();
             using var command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@IdSubject", Id);
+            command.Parameters.AddWithValue("@IdSubject", IdSubject);
             var reader = command.ExecuteReader();
             while (reader.Read())
             {

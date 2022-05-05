@@ -27,11 +27,12 @@ namespace Class.Persister
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@IdPerson", teacher.Id);
             command.Parameters.AddWithValue("@Matricola", teacher.Matricola);
-            command.Parameters.AddWithValue("@DataIscrizione", teacher.DataAssunzione);
-            return Convert.ToInt32(command.ExecuteNonQuery());
+            command.Parameters.AddWithValue("@DataAssunzione", teacher.DataAssunzione);
+            return Convert.ToInt32(command.ExecuteScalar());
+            //return Convert.ToInt32(command.ExecuteNonQuery());
         }
 
-        public List<Student> GetProf()
+        public List<Teacher> GetProf()
         {
 
             var sql = @"SELECT[IdTeacher]
@@ -77,7 +78,7 @@ namespace Class.Persister
             return command.ExecuteNonQuery() > 0;
         }
 
-        public List<Student> GetProf(int idTeacher)
+        public List<Teacher> GetProf(int idTeacher)
         {
 
             var sql = @"
