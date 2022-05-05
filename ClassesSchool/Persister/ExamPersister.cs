@@ -12,7 +12,7 @@ namespace Class.Persister
             ConnectionString = connectionString;
         }
 
-        public bool Add(Exam exam)
+        public int Add(Exam exam)
         {
             var sql = @"INSERT INTO [dbo].[Exam]
                            ([IdTeacher]
@@ -28,7 +28,7 @@ namespace Class.Persister
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@IdTeacher", exam.IdTeacher);
             command.Parameters.AddWithValue("@Date", exam.Date);
-            return command.ExecuteNonQuery() > 0;
+            return Convert.ToInt32(command.ExecuteScalar());
         }
         public bool Update(Exam exam)
         {
