@@ -79,7 +79,7 @@ namespace Class.Persister
                     IdSubject = Convert.ToInt32(reader["IdSubject"]),
                     Description = Convert.ToString(reader["Description"]),
                     Credits = Convert.ToString(reader["Credits"]),
-                    Hours = Convert.ToDateTime(reader["Hours"]),
+                    Hours = Convert.ToInt32(reader["Hours"]),
                 };
 
             }
@@ -111,7 +111,7 @@ namespace Class.Persister
                     Name=Convert.ToString(reader["Name"]),
                     IdSubject = Convert.ToInt32(reader["IdSubject"]),
                     Credits = Convert.ToString(reader["Credits"]),
-                    Hours= Convert.ToDateTime(reader["Hours"]),
+                    Hours= Convert.ToInt32(reader["Hours"]),
                     Description = Convert.ToString(reader["Description"]),
                 };
 

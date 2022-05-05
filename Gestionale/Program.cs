@@ -2,8 +2,8 @@
 using Class.Persister;
 
 
-var stringconnection = "Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;";
-//var stringconnection = "Server=.;Database=Gestionale;Trusted_Connection=True;";
+//var stringconnection = "Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;";
+var stringconnection = "Server=.;Database=Gestionale;Trusted_Connection=True;";
 
 var persisterPerson = new PersonPersister(stringconnection);
 var studentPersister = new StudentPersister(stringconnection);
@@ -60,7 +60,7 @@ var subject = new Subject
     //per mettere nome cognome?
     Name = "Math",
     Id = teacher.Id,
-    Hours = new DateTime(3),
+    Hours = 3,
     Description = "Base cours to introduce the linear operations Algebra",
     Credits = "9"
 };
