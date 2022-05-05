@@ -2,8 +2,8 @@
 using Class.Persister;
 
 
-//var stringconnection = "Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;";
-var stringconnection = "Server=.;Database=Gestionale;Trusted_Connection=True;";
+var stringconnection = "Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;";
+//var stringconnection = "Server=.;Database=Gestionale;Trusted_Connection=True;";
 
 var persisterPerson = new PersonPersister(stringconnection);
 var studentPersister = new StudentPersister(stringconnection);

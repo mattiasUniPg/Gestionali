@@ -22,7 +22,7 @@ namespace Class.Persister
                                    ,@Surname
                                    ,@BirthDay
                                    ,@Gender); SELECT @@IDENTITY AS 'Identity';  ";
-
+             
                 using var connection = new SqlConnection(ConnectionString);
                 connection.Open();
                 using var command = new SqlCommand(sql, connection);
