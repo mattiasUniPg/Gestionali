@@ -2,8 +2,8 @@
 using Class.Persister;
 
 
-var stringconnection = "Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;";
-//Gino var stringconnection = "Server=.;Database=Gestionale;Trusted_Connection=True;";
+//var stringconnection = "Server=ACADEMYNETPD04\\SQLEXPRESS;Database=Gestionale;Trusted_Connection=True;";
+var stringconnection = "Server=.;Database=Gestionale;Trusted_Connection=True;";
 
 var persisterPerson = new PersonPersister(stringconnection);
 var studentPersister = new StudentPersister(stringconnection);
@@ -17,7 +17,7 @@ var person = new Person
     Birthday = new DateTime(1998, 8, 14),
     Gender ="Female",
     Name = "Stefania",
-    Surname ="Nicoletta"
+    Surname ="Nicoletto"
 };
 
 var idPerson = persisterPerson.Add(person);
@@ -34,13 +34,15 @@ List<Person> stampaPerson = (CountPersons);
 Console.WriteLine(stampaPerson.Count);
 
 Console.WriteLine($"Inserisci ID persona da ricercare");
-var GetPerson = Convert.ToString(Console.ReadLine());
-persisterPerson.GetPeople(GetPerson);
+var GetPerson = Convert.ToString(Console.ReadLine()); 
+var searchPerson = persisterPerson.GetPeople(GetPerson).FirstOrDefault();
 
-Console.WriteLine($"***********************************\n");
-/*   Console.WriteLine($"Persona associata all'ID {person.Id}, {person.Name}," +
-     $" {person.Surname}, {person.Gender}, {person.Address} nata il {person.Birthday} ");
-*/
+if (searchPerson != null)
+{
+    Console.WriteLine($"***********************************\n");
+    Console.WriteLine($"Persona associata all'ID {searchPerson.Id}, {searchPerson.Name}," +
+      $" {searchPerson.Surname}, {searchPerson.Gender}, {searchPerson.Address} nata il {searchPerson.Birthday} ");
+}
 
 var student = new Student
 {
