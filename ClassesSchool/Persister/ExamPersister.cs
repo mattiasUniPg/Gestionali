@@ -28,6 +28,7 @@ namespace Class.Persister
             using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@IdTeacher", exam.IdTeacher);
             command.Parameters.AddWithValue("@Date", exam.Date);
+            command.Parameters.AddWithValue("@IdSubject", exam.IdSubject);
             return Convert.ToInt32(command.ExecuteScalar());
         }
         public bool Update(Exam exam)

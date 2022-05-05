@@ -29,7 +29,6 @@ namespace Class.Persister
             command.Parameters.AddWithValue("@Matricola", teacher.Matricola);
             command.Parameters.AddWithValue("@DataAssunzione", teacher.DataAssunzione);
             return Convert.ToInt32(command.ExecuteScalar());
-            //return Convert.ToInt32(command.ExecuteNonQuery());
         }
 
         public List<Teacher> GetProf()
